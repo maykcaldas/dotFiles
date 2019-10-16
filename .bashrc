@@ -148,3 +148,9 @@ function Sdumont() {
     callSdumont
 }
 
+sharc(){
+    export SHARC=/home/mayk/programs/sharc/bin
+    declare -x HOSTNAME="Mayk"
+    export MOLCAS=/home/mayk/programs/OpenMolcas/build
+}
+
