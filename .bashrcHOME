@@ -121,7 +121,6 @@ fi
 
 alias ..='cd ..'
 alias vi='vim'
-alias watch='watch '
 
 alias pypolybuilder='python $HOME/Documents/Labmmol/pyPolyBuilder/pypolybuilder/pypolybuilder/__main__.py'
 alias dendridocker='python3 $HOME/Documents/Labmmol/Dendrimer/dendriDocker/__main__.py'
@@ -131,13 +130,6 @@ alias dendridocker='python3 $HOME/Documents/Labmmol/Dendrimer/dendriDocker/__mai
 alias gmx514='source $HOME/Programs/gromacs-5.1.4/install/bin/GMXRC'
 alias gmx2018='source $HOME/programs/gromacs-2018.1/install/bin/GMXRC'
 alias gmx407='source $HOME/programs/gromacs-4.0.7/install/bin/GMXRC'
-
-sharc(){
-    export SHARC=/home/mayk/programs/sharc/bin
-    declare -x HOSTNAME="Mayk"
-    export MOLCAS=/home/mayk/programs/OpenMolcas/build
-}
-
 
 mopac(){
     export MOPAC_LICENSE='$HOME/programs/MOPAC2016/'
@@ -155,6 +147,12 @@ gaussian(){
 	source $g09root/g09/bsd/g09.profile
 }
 
+sharc(){
+    export SHARC=/home/kyam/Programs/sharc/bin
+    declaro -x HOSTNAME="Mayk"
+    export MOLCAS=/home/kyam/Programs/OpenMolcas/build
+}
+
 #
 #----------------------------------------------
 #
@@ -162,13 +160,6 @@ gaussian(){
 alias watch="watch "
 alias loboc='ssh -p 2022 maykcaldas@loboc.nacad.ufrj.br'
 alias labmmol='ssh -p 3020 mayk@gw.labmmol.iq.ufrj.br'
-alias vpncSdumont='echo SqN5FhFR | sudo vpnc /etc/vpnc/sdumont.conf'
-alias callSdumont='sshpass -p SqN5FhFR ssh mayk.ramos@login.sdumont.lncc.br'
-
-function Sdumont() {
-    vpncSdumont
-    callSdumont
-}
 
 #while [ True ]; do sleep 5; if [ $(($RANDOM%10)) -eq 8 ]; then echo; apt moo; sleep 60; fi; done &
 
