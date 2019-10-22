@@ -120,37 +120,57 @@ if ! shopt -oq posix; then
   fi
 fi
 
-alias ..='cd ..'
+#########################################
+###   Personal aliases and functions  ###
+#########################################
 
-alias pypolybuilder='python $HOME/Documents/Labmmol/pyPolyBuilder/pypolybuilder/pypolybuilder/__main__.py'
-alias dendridocker='python3 $HOME/Documents/Labmmol/Dendrimer/dendriDocker/__main__.py'
-alias gmx514='source $HOME/programs/gromacs-5.1.4/install/bin/GMXRC'
-alias gmx2018='source $HOME/programs/gromacs-2018.1/install/bin/GMXRC'
-alias gmx407='source $HOME/programs/gromacs-4.0.7/install/bin/GMXRC'
-alias gmx2016.6='source $HOME/programs/gromacs-2016.6/install/bin/GMXRC'
-export MOPAC_LICENSE='/home/mayk/programs/MOPAC2016/'
-export LD_LIBRARY_PATH='/home/mayk/programs/MOPAC2016'
-alias mopac='/home/mayk/programs/MOPAC2016/MOPAC2016.exe'
+alias ..='cd ..'
 alias vi='vim'
 
-PATH=$PATH:/home/mayk/programs/g09
-export g09root=/home/mayk/programs
-source $g09root/g09/bsd/g09.profile
+#########################################
+###   Defining software initiation    ###
+#########################################
+
+alias gmx514='source $HOME/Programs/gromacs-5.1.4/install/bin/GMXRC'
+alias gmx2018='source $HOME/programs/gromacs-2018.1/install/bin/GMXRC'
+alias gmx407='source $HOME/programs/gromacs-4.0.7/install/bin/GMXRC'
+alias pypolybuilder='python $HOME/Documents/Labmmol/pyPolyBuilder/pypolybuilder/pypolybuilder/__main__.py'
+alias dendridocker='python3 $HOME/Documents/Labmmol/Dendrimer/dendriDocker/__main__.py'
+
+mopac(){
+    export MOPAC_LICENSE='$HOME/programs/MOPAC2016/'
+    export LD_LIBRARY_PATH='$HOME/programs/MOPAC2016'
+    alias mopac='$HOME/programs/MOPAC2016/MOPAC2016.exe'
+}
+
+openMolcas(){
+    export PATH='$PATH:/home/mayk/Programs/build'
+}
+
+gaussian(){
+    PATH=$PATH:/home/mayk/Programs/g09
+    export g09root=/home/mayk/Programs
+    source $g09root/g09/bsd/g09.profile
+}
+
+sharc(){
+    export SHARC=/home/mayk/Programs/sharc/bin
+    declare -x HOSTNAME="MSSM/Labmmol"
+    export MOLCAS=/home/mayk/Programs/OpenMolcas/build
+}
+
+############################################
+#----------   Cluster access  -------------#
+############################################
 
 alias watch="watch "
 alias loboc='ssh -p 2022 maykcaldas@loboc.nacad.ufrj.br'
-alias labmmol='sshpass -p iq89588958 ssh mayk@192.168.30.20'
+alias labmmol='ssh -p 3020 mayk@gw.labmmol.iq.ufrj.br'
 alias vpncSdumont='echo SqN5FhFR | sudo vpnc /etc/vpnc/sdumont.conf'
 alias callSdumont='sshpass -p SqN5FhFR ssh mayk.ramos@login.sdumont.lncc.br'
 
 function Sdumont() {
     vpncSdumont
     callSdumont
-}
-
-sharc(){
-    export SHARC=/home/mayk/programs/sharc/bin
-    declare -x HOSTNAME="Mayk"
-    export MOLCAS=/home/mayk/programs/OpenMolcas/build
 }
 

@@ -119,17 +119,23 @@ if ! shopt -oq posix; then
   fi
 fi
 
+
+#########################################
+###   Personal aliases and functions  ###
+#########################################
+
 alias ..='cd ..'
 alias vi='vim'
 
-alias pypolybuilder='python $HOME/Documents/Labmmol/pyPolyBuilder/pypolybuilder/pypolybuilder/__main__.py'
-alias dendridocker='python3 $HOME/Documents/Labmmol/Dendrimer/dendriDocker/__main__.py'
+#########################################
+###   Defining software initiation    ###
+#########################################
 
-
-#Defining software initiation
 alias gmx514='source $HOME/Programs/gromacs-5.1.4/install/bin/GMXRC'
 alias gmx2018='source $HOME/programs/gromacs-2018.1/install/bin/GMXRC'
 alias gmx407='source $HOME/programs/gromacs-4.0.7/install/bin/GMXRC'
+alias pypolybuilder='python $HOME/Documents/Labmmol/pyPolyBuilder/pypolybuilder/pypolybuilder/__main__.py'
+alias dendridocker='python3 $HOME/Documents/Labmmol/Dendrimer/dendriDocker/__main__.py'
 
 mopac(){
     export MOPAC_LICENSE='$HOME/programs/MOPAC2016/'
@@ -149,17 +155,25 @@ gaussian(){
 
 sharc(){
     export SHARC=/home/kyam/Programs/sharc/bin
-    declaro -x HOSTNAME="Mayk"
+    declare -x HOSTNAME="Mayk"
     export MOLCAS=/home/kyam/Programs/OpenMolcas/build
 }
 
-#
-#----------------------------------------------
-#
+############################################
+#----------   Cluster access  -------------#
+############################################
 
 alias watch="watch "
 alias loboc='ssh -p 2022 maykcaldas@loboc.nacad.ufrj.br'
 alias labmmol='ssh -p 3020 mayk@gw.labmmol.iq.ufrj.br'
+alias vpncSdumont='echo SqN5FhFR | sudo vpnc /etc/vpnc/sdumont.conf'
+alias callSdumont='sshpass -p SqN5FhFR ssh mayk.ramos@login.sdumont.lncc.br'
+
+function Sdumont() {
+    vpncSdumont
+    callSdumont
+}
+
 
 #while [ True ]; do sleep 5; if [ $(($RANDOM%10)) -eq 8 ]; then echo; apt moo; sleep 60; fi; done &
 
