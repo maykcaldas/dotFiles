@@ -133,6 +133,7 @@ alias vi='vim'
 
 alias gmx514='source $HOME/Programs/gromacs-5.1.4/install/bin/GMXRC'
 alias gmx2018='source $HOME/programs/gromacs-2018.1/install/bin/GMXRC'
+alias gmx2016='source $HOME/programs/gromacs-2016.6/install/bin/GMXRC'
 alias gmx407='source $HOME/programs/gromacs-4.0.7/install/bin/GMXRC'
 alias pypolybuilder='python $HOME/Documents/Labmmol/pyPolyBuilder/pypolybuilder/pypolybuilder/__main__.py'
 alias dendridocker='python3 $HOME/Documents/Labmmol/Dendrimer/dendriDocker/__main__.py'

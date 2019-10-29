@@ -57,7 +57,7 @@ if [ -n "$force_color_prompt" ]; then
 fi
 
 if [ "$color_prompt" = yes ]; then
-    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;31m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
 else
     PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
 fi
@@ -88,8 +88,7 @@ fi
 #export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
 # Randomized wallpaper in each new terminal opening
-feh --random --bg-fill /home/mayk/Pictures/Wallpaper/*
-
+feh --random --bg-max /home/kyam/Pictures/Wallpapers/*
 
 # some more ls aliases
 alias ll='ls -alF'
@@ -120,6 +119,7 @@ if ! shopt -oq posix; then
   fi
 fi
 
+
 #########################################
 ###   Personal aliases and functions  ###
 #########################################
@@ -133,6 +133,7 @@ alias vi='vim'
 
 alias gmx514='source $HOME/Programs/gromacs-5.1.4/install/bin/GMXRC'
 alias gmx2018='source $HOME/programs/gromacs-2018.1/install/bin/GMXRC'
+alias gmx2016='source $HOME/programs/gromacs-2016.6/install/bin/GMXRC'
 alias gmx407='source $HOME/programs/gromacs-4.0.7/install/bin/GMXRC'
 alias pypolybuilder='python $HOME/Documents/Labmmol/pyPolyBuilder/pypolybuilder/pypolybuilder/__main__.py'
 alias dendridocker='python3 $HOME/Documents/Labmmol/Dendrimer/dendriDocker/__main__.py'
@@ -144,19 +145,19 @@ mopac(){
 }
 
 openMolcas(){
-    export PATH='$PATH:/home/mayk/Programs/build'
+    export PATH='$PATH:/home/kyam/Programs/build'
 }
 
 gaussian(){
-    PATH=$PATH:/home/mayk/Programs/g09
-    export g09root=/home/mayk/Programs
-    source $g09root/g09/bsd/g09.profile
+	PATH=$PATH:/home/kyam/Programs/g09
+	export g09root=/home/kyam/Programs
+	source $g09root/g09/bsd/g09.profile
 }
 
 sharc(){
-    export SHARC=/home/mayk/Programs/sharc/bin
-    declare -x HOSTNAME="MSSM/Labmmol"
-    export MOLCAS=/home/mayk/Programs/OpenMolcas/build
+    export SHARC=/home/kyam/Programs/sharc/bin
+    declare -x HOSTNAME="Mayk"
+    export MOLCAS=/home/kyam/Programs/OpenMolcas/build
 }
 
 ############################################
@@ -173,4 +174,7 @@ function Sdumont() {
     vpncSdumont
     callSdumont
 }
+
+
+#while [ True ]; do sleep 5; if [ $(($RANDOM%10)) -eq 8 ]; then echo; apt moo; sleep 60; fi; done &
 
