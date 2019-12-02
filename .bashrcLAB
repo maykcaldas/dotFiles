@@ -57,7 +57,7 @@ if [ -n "$force_color_prompt" ]; then
 fi
 
 if [ "$color_prompt" = yes ]; then
-    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;31m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
 else
     PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
 fi
@@ -88,7 +88,8 @@ fi
 #export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
 # Randomized wallpaper in each new terminal opening
-feh --random --bg-max /home/kyam/Pictures/Wallpapers/*
+feh --random --bg-fill /home/mayk/Pictures/Wallpaper/*
+
 
 # some more ls aliases
 alias ll='ls -alF'
@@ -119,7 +120,6 @@ if ! shopt -oq posix; then
   fi
 fi
 
-
 #########################################
 ###   Personal aliases and functions  ###
 #########################################
@@ -131,12 +131,11 @@ alias vi='vim'
 ###   Defining software initiation    ###
 #########################################
 
-alias gmx514='source $HOME/Programs/gromacs-5.1.4/install/bin/GMXRC'
+alias gmx514='source $HOME/programs/gromacs-5.1.4/install/bin/GMXRC'
 alias gmx2018='source $HOME/programs/gromacs-2018.1/install/bin/GMXRC'
-alias gmx2016='source $HOME/programs/gromacs-2016.6/install/bin/GMXRC'
-alias gmx407='source $HOME/programs/gromacs-4.0.7/install/bin/GMXRC'
+alias gmx2019='source $HOME/programs/gromacs-2019.4/install/bin/GMXRC'
 alias pypolybuilder='python $HOME/Documents/Labmmol/pyPolyBuilder/pypolybuilder/pypolybuilder/__main__.py'
-alias dendridocker='python3 $HOME/Documents/Labmmol/Dendrimer/dendriDocker/__main__.py'
+alias dendridocker='python3 $HOME/Documents/Labmmol/Dendrimer/dendriDOCK/dendriDocker/__main__.py'
 
 mopac(){
     export MOPAC_LICENSE='$HOME/programs/MOPAC2016/'
@@ -145,19 +144,19 @@ mopac(){
 }
 
 openMolcas(){
-    export PATH='$PATH:/home/kyam/Programs/build'
+    export PATH='$PATH:/home/mayk/Programs/build'
 }
 
 gaussian(){
-	PATH=$PATH:/home/kyam/Programs/g09
-	export g09root=/home/kyam/Programs
-	source $g09root/g09/bsd/g09.profile
+    PATH=$PATH:/home/mayk/Programs/g09
+    export g09root=/home/mayk/Programs
+    source $g09root/g09/bsd/g09.profile
 }
 
 sharc(){
-    export SHARC=/home/kyam/Programs/sharc/bin
-    declare -x HOSTNAME="Mayk"
-    export MOLCAS=/home/kyam/Programs/OpenMolcas/build
+    export SHARC=/home/mayk/Programs/sharc/bin
+    declare -x HOSTNAME="MSSM/Labmmol"
+    export MOLCAS=/home/mayk/Programs/OpenMolcas/build
 }
 
 ############################################
@@ -166,7 +165,7 @@ sharc(){
 
 alias watch="watch "
 alias loboc='ssh -p 2022 maykcaldas@loboc.nacad.ufrj.br'
-alias labmmol='ssh -p 3020 mayk@gw.labmmol.iq.ufrj.br'
+alias labmmol='sshpass -p iq89588958 ssh mayk@192.168.30.20'
 alias vpncSdumont='echo SqN5FhFR | sudo vpnc /etc/vpnc/sdumont.conf'
 alias callSdumont='sshpass -p SqN5FhFR ssh mayk.ramos@login.sdumont.lncc.br'
 
@@ -174,7 +173,4 @@ function Sdumont() {
     vpncSdumont
     callSdumont
 }
-
-
-#while [ True ]; do sleep 5; if [ $(($RANDOM%10)) -eq 8 ]; then echo; apt moo; sleep 60; fi; done &
 
