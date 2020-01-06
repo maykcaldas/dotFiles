@@ -134,8 +134,10 @@ alias vi='vim'
 alias gmx514='source $HOME/programs/gromacs-5.1.4/install/bin/GMXRC'
 alias gmx2018='source $HOME/programs/gromacs-2018.1/install/bin/GMXRC'
 alias gmx2019='source $HOME/programs/gromacs-2019.4/install/bin/GMXRC'
+
 alias pypolybuilder='python $HOME/Documents/Labmmol/pyPolyBuilder/pypolybuilder/pypolybuilder/__main__.py'
 alias dendridocker='python3 $HOME/Documents/Labmmol/Dendrimer/dendriDOCK/dendriDocker/__main__.py'
+alias sysbuilding='python3 $HOME/Documents/Labmmol/Dendrimer/dendriDOCK/dendriDocker/sysBuilding/__main__.py'
 
 mopac(){
     export MOPAC_LICENSE='$HOME/programs/MOPAC2016/'
@@ -148,9 +150,15 @@ openMolcas(){
 }
 
 gaussian(){
-    PATH=$PATH:/home/mayk/Programs/g09
-    export g09root=/home/mayk/Programs
+    PATH=$PATH:/home/mayk/programs/g09
+    export g09root=/home/mayk/programs
     source $g09root/g09/bsd/g09.profile
+}
+
+orcarc(){
+    export ORCADIR=/home/mayk/programs/orca-4.0.1.2
+    PATH=$PATH:$ORCADIR
+    LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$ORCADIR
 }
 
 sharc(){
