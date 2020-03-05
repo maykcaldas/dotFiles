@@ -126,6 +126,10 @@ fi
 
 alias ..='cd ..'
 alias vi='vim'
+alias c='if [ $(($RANDOM % 10)) == 8 ]; then timeout 3 cmatrix; clear
+         elif [ $(($RANDOM % 10)) == 2 ]; then timeout 5 cbeams -o; clear
+         else clear
+         fi'
 
 #########################################
 ###   Defining software initiation    ###
