@@ -126,22 +126,31 @@ fi
 
 alias ..='cd ..'
 alias vi='vim'
+alias c='if [ $(($RANDOM % 10)) == 8 ]; then timeout 3 cmatrix; clear
+        elif [ $(($RANDOM % 10)) == 2 ]; then timeout 5 cbeams -o; c    lear
+        else clear
+132          fi'
 
 #########################################
 ###   Defining software initiation    ###
 #########################################
 
 alias gmx514='source $HOME/Programs/gromacs-5.1.4/install/bin/GMXRC'
-alias gmx2018='source $HOME/programs/gromacs-2018.1/install/bin/GMXRC'
-alias gmx2016='source $HOME/programs/gromacs-2016.6/install/bin/GMXRC'
-alias gmx407='source $HOME/programs/gromacs-4.0.7/install/bin/GMXRC'
+alias gmx2018='source $HOME/Programs/gromacs-2018.8/install/bin/GMXRC'
+alias gmx2019='source $HOME/Programs/gromacs-2019.5/install/bin/GMXRC'
 alias pypolybuilder='python $HOME/Documents/Labmmol/pyPolyBuilder/pypolybuilder/pypolybuilder/__main__.py'
 alias dendridocker='python3 $HOME/Documents/Labmmol/Dendrimer/dendriDocker/__main__.py'
 
 mopac(){
-    export MOPAC_LICENSE='$HOME/programs/MOPAC2016/'
-    export LD_LIBRARY_PATH='$HOME/programs/MOPAC2016'
-    alias mopac='$HOME/programs/MOPAC2016/MOPAC2016.exe'
+    export MOPAC_LICENSE='$HOME/Programs/MOPAC2016/'
+    export LD_LIBRARY_PATH='$HOME/Programs/MOPAC2016'
+    alias mopac='$HOME/Programs/MOPAC2016/MOPAC2016.exe'
+}
+
+orcarc(){
+    export ORCADIR=/home/kyam/Programs/orca-4.2.1
+    PATH=$PATH:$ORCADIR
+    LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$ORCADIR
 }
 
 openMolcas(){
