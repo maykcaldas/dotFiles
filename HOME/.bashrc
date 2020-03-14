@@ -127,9 +127,9 @@ fi
 alias ..='cd ..'
 alias vi='vim'
 alias c='if [ $(($RANDOM % 10)) == 8 ]; then timeout 3 cmatrix; clear
-        elif [ $(($RANDOM % 10)) == 2 ]; then timeout 5 cbeams -o; c    lear
-        else clear
-132          fi'
+            elif [ $(($RANDOM % 10)) == 2 ]; then timeout 5 cbeams -o; clear
+            else clear
+         fi'
 
 #########################################
 ###   Defining software initiation    ###
@@ -137,7 +137,7 @@ alias c='if [ $(($RANDOM % 10)) == 8 ]; then timeout 3 cmatrix; clear
 
 alias gmx514='source $HOME/Programs/gromacs-5.1.4/install/bin/GMXRC'
 alias gmx2018='source $HOME/Programs/gromacs-2018.8/install/bin/GMXRC'
-alias gmx2019='source $HOME/Programs/gromacs-2019.5/install/bin/GMXRC'
+alias gmx2019='source $HOME/Programs/gromacs-2019.4/install/bin/GMXRC'
 alias pypolybuilder='python $HOME/Documents/Labmmol/pyPolyBuilder/pypolybuilder/pypolybuilder/__main__.py'
 alias dendridocker='python3 $HOME/Documents/Labmmol/Dendrimer/dendriDocker/__main__.py'
 
