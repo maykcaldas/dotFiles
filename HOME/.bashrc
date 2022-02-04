@@ -126,20 +126,46 @@ fi
 
 alias ..='cd ..'
 alias vi='vim'
+alias history='history | grep '
+alias du='du -hsc '
 alias c='if [ $(($RANDOM % 10)) == 8 ]; then timeout 3 cmatrix; clear
             elif [ $(($RANDOM % 10)) == 2 ]; then timeout 5 cbeams -o; clear
             else clear
          fi'
+alias tibia='/home/kyam/Programs/Tibia/start-tibia-launcher.sh'
+alias stremio='/home/kyam/Programs/streamio-3.6.5/Stremio.sh'
+
+alias clac='cd /home/kyam/Documents/Biblioteca/Languages/Alemão/Deutsch_CLAC/A1.2'
+alias cederj='cd /home/kyam/Documents/Biblioteca/UFRJ/CEDERJ/4o_Semestre'
+alias bib='cd /home/kyam/Documents/Biblioteca'
+alias tese='cd /home/kyam/Documents/Biblioteca/UFRJ/PGQu/ATese/thesis'
+
+alias monitorON='xrandr --auto --output eDP-1 --right-of HDMI-1'
+alias monitorOFF='xrandr --output HDMI-1 --off'
+alias changeMonitor="monitorOFF; monitorON"
+alias up="sudo apt update; sudo apt upgrade"
+
+alias zotero="./home/kyam/Programs/Zotero_linux-x86_64/zotero"
 
 #########################################
 ###   Defining software initiation    ###
 #########################################
 
+#Making OpenBabel default in python3
+export PYTHONPATH=/usr/local/lib:$PYTHONPATH
+
 alias gmx514='source $HOME/Programs/gromacs-5.1.4/install/bin/GMXRC'
 alias gmx2018='source $HOME/Programs/gromacs-2018.8/install/bin/GMXRC'
-alias gmx2019='source $HOME/Programs/gromacs-2019.4/install/bin/GMXRC'
-alias pypolybuilder='python $HOME/Documents/Labmmol/pyPolyBuilder/pypolybuilder/pypolybuilder/__main__.py'
-alias dendridocker='python3 $HOME/Documents/Labmmol/Dendrimer/dendriDocker/__main__.py'
+gmx2019p(){
+    source $HOME/Programs/plumed-2.6.0/sourceme.sh
+    source $HOME/Programs/gromacs-2019.4/install/bin/GMXRC
+}
+alias gmx2019='source $HOME/Programs/gromacs-2019.6/install/bin/GMXRC'
+alias pypolybuilder='python3 $HOME/Programs/pypolybuilder/pypolybuilder/__main__.py'
+alias dendridocker='python3 $HOME/Programs/dendridocker/__main__.py'
+alias sysbuilding='python3 $HOME/Programs/dendridocker/sysBuilding/__main__.py'
+alias vmd='$HOME/Programs/vmd-1.9.3/bin/vmd '
+alias pycharm='/home/kyam/Programs/pycharm-community-2020.2/bin/pycharm.sh'
 
 mopac(){
     export MOPAC_LICENSE='$HOME/Programs/MOPAC2016/'
@@ -148,13 +174,13 @@ mopac(){
 }
 
 orcarc(){
-    export ORCADIR=/home/kyam/Programs/orca-4.2.1
-    PATH=$PATH:$ORCADIR
-    LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$ORCADIR
+    export ORCADIR='/home/kyam/Programs/orca-4.2.1'
+    export PATH=$ORCADIR:$PATH
+    export LD_LIBRARY_PATH=$ORCADIR:$LD_LIBRARY_PATH
 }
 
 openMolcas(){
-    export PATH='$PATH:/home/kyam/Programs/build'
+    export PATH='$PATH:/home/kyam/Programs/OpenMolcas/build'
 }
 
 gaussian(){
@@ -176,14 +202,61 @@ sharc(){
 alias watch="watch "
 alias loboc='ssh -p 2022 maykcaldas@loboc.nacad.ufrj.br'
 alias labmmol='ssh -p 3020 mayk@gw.labmmol.iq.ufrj.br'
-alias vpncSdumont='echo SqN5FhFR | sudo vpnc /etc/vpnc/sdumont.conf'
-alias callSdumont='sshpass -p SqN5FhFR ssh mayk.ramos@login.sdumont.lncc.br'
+alias dirac='ssh maykcaldas@DIRAC.IF.UFRJ.BR'
+
+alias vpncSdumont='echo @Ricardo2020 | sudo vpnc /etc/vpnc/sdumont.conf'
+alias callSdumont='sshpass -p @Ricardo2020 ssh ricardo.silva4@login.sdumont.lncc.br'
 
 function Sdumont() {
     vpncSdumont
     callSdumont
 }
 
+# Spotify manipulation
+alias sNext="dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next"
+alias sPrev="dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous"
+alias sPause="dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Pause"
+
+
+function sync(){
+    if [[ $# -ne 3 || $1 == "-h" || $1 == "--help" ]]; then
+        echo ""
+        echo "Usage: sync <clusterName> <origin-path> <destination-path>"
+        echo ""
+        echo "Available clusters:"
+        echo " - labmmol"
+        return
+    fi
+    if [[ $1 == "labmmol" ]]; then
+        rsync -azPe 'ssh -p 3020' --append-verify --progress mayk@gw.labmmol.iq.ufrj.br:${2} $3
+    elif [[ $1 == "code" ]]; then
+        echo "rsync -azP --append-verify --progress $2 $3"
+    else 
+        echo "cluster not configured"
+    fi
+    
+}
 
 #while [ True ]; do sleep 5; if [ $(($RANDOM%10)) -eq 8 ]; then echo; apt moo; sleep 60; fi; done &
 
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+conda(){
+__conda_setup="$('/home/kyam/Programs/miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/home/kyam/Programs/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/kyam/Programs/miniconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/home/kyam/Programs/miniconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+}
+# <<< conda initialize <<<
+
+#Initializing
+
+# fun russian roulette. It's funnier with apt moo, tho
+#if [ $((RANDOM%10)) -eq 8 ]; then neofetch; fi
