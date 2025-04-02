@@ -20,3 +20,6 @@ Checkout to home or lab depending on where you're working.
 - .config
    - i3
    - polybar
+
+## FH (MacOS)
+- .zshrc
